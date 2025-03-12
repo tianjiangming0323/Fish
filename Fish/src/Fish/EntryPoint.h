@@ -17,6 +17,13 @@ int main(int argc, char** argv)
 //前者为参数计数（Argument Count），表示命令行参数的总数量（包括程序名本身）；
 //后者为参数值数组（Argument Values），存储所有命令行参数的字符串指针数组。	
 {
+	Fish::Log::Init();
+	//Init为静态成员函数，故可以不实例化类，直接这样调用
+	//CPP笔记 P7 32条
+	FISH_CORE_WARN("Initialized Log!");
+	int a = 5;
+	FISH_INFO("Hello!  var = {0}",a);
+
 	auto app = Fish::CreateApplication();
 	app->run();
 	delete app;
