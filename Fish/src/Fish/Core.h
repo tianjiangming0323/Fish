@@ -1,6 +1,5 @@
 #pragma once
 
-
 #ifdef FISH_PLATFORM_WINDOWS
 	#ifdef FISH_BUILD_DLL
 		#define FISH_API __declspec(dllexport)
@@ -10,3 +9,5 @@
 #else
 	#error FISH only support Windows!
 #endif
+
+#define BIT(x) (1 << x)

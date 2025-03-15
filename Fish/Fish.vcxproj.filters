@@ -19,6 +19,10 @@
     <ClInclude Include="src\Fish\Log.h">
       <Filter>Fish</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fish\Events\MouseEvent.h" />
+    <ClInclude Include="src\Fish\Events\Event.h" />
+    <ClInclude Include="src\Fish\Events\KeyEvent.h" />
+    <ClInclude Include="src\Fish\Events\ApplicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp">
