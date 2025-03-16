@@ -18,6 +18,9 @@ project "Fish"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")                   --.. XX .. 中..是字符串连接符
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "fishpch.h"
+	pchsource "Fish/src/fishpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

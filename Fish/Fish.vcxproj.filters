@@ -4,6 +4,9 @@
     <Filter Include="Fish">
       <UniqueIdentifier>{EF3F857C-DB76-860D-8463-6C107079020F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fish\Events">
+      <UniqueIdentifier>{F3C83325-5F7E-AC1A-E872-A6F15427A31E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Fish.h" />
@@ -16,13 +19,22 @@
     <ClInclude Include="src\Fish\EntryPoint.h">
       <Filter>Fish</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fish\Events\ApplicationEvent.h">
+      <Filter>Fish\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fish\Events\Event.h">
+      <Filter>Fish\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fish\Events\KeyEvent.h">
+      <Filter>Fish\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fish\Events\MouseEvent.h">
+      <Filter>Fish\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fish\Log.h">
       <Filter>Fish</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fish\Events\MouseEvent.h" />
-    <ClInclude Include="src\Fish\Events\Event.h" />
-    <ClInclude Include="src\Fish\Events\KeyEvent.h" />
-    <ClInclude Include="src\Fish\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\fishpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp">
@@ -31,5 +43,6 @@
     <ClCompile Include="src\Fish\Log.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
+    <ClCompile Include="src\fishpch.cpp" />
   </ItemGroup>
 </Project>

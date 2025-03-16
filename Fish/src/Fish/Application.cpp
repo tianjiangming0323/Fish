@@ -1,6 +1,8 @@
 //类的分文件编写
 //在使用时只包含头文件即可
 //cpp 笔记 P5第25条
+#include "fishpch.h"    
+//每个cpp文件中都需要包含预编译头文件，且需要第一个包含
 #include "Application.h"
 #include "Fish/Events/ApplicationEvent.h"
 #include "Fish/Log.h"

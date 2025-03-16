@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Fish/Core.h"
-#include <string>
-#include <functional>
 
 namespace Fish
 {
