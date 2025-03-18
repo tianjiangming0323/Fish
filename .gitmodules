@@ -1,3 +1,6 @@
 [submodule "Fish/vendor/spdlog"]
 	path = Fish/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Fish/vendor/GLFW"]
+	path = Fish/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

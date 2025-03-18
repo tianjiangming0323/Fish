@@ -1,3 +1,4 @@
+#include "fishpch.h"
 #include "Log.h"
 
 namespace Fish

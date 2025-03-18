@@ -7,12 +7,14 @@
 #include "Fish/Events/ApplicationEvent.h"
 #include "Fish/Log.h"
 
+#include <GLFW/glfw3.h>
+
 
 namespace Fish
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 
 	}
 
@@ -25,7 +27,7 @@ namespace Fish
 
 	void Application::run()
 	{
-		WindowResizeEvent e(1280, 720);
+		/*WindowResizeEvent e(1280, 720);
 		if (e.IsInCategory(EventCategoryApplication))
 		{
 			FISH_TRACE(e.ToString());
@@ -35,7 +37,18 @@ namespace Fish
 		{
 			FISH_TRACE(e.ToString());
 		}
-		while (true);
+		while (true);*/
+
+		while (m_Running)
+		{
+			glClearColor(1, 0, 1, 1);
+			//设置清除颜色缓冲时使用的颜色
+			glClear(GL_COLOR_BUFFER_BIT);
+			//清除当前帧缓冲区的指定部分（这里是颜色缓冲区）
+			//GL_DEPTH_BUFFER_BIT：清除深度缓冲区（用于3D深度测试）。
+			//GL_STENCIL_BUFFER_BIT：清除模板缓冲区（用于模板测试）。
+			m_Window->OnUpdate();
+		}
 	}
 
 }

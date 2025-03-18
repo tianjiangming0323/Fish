@@ -10,6 +10,13 @@ workspace "Fish"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"             --Debug-windows-x86_64
 
+--include directories relative to root floder (solution directory)
+--IncludeDir = {} 是创建了一个空的 Lua 表（table），用来存储不同模块或库的包含目录。
+IncludeDir = {}
+IncludeDir["GLFW"] = "Fish/vendor/GLFW/include"
+
+include "Fish/vendor/GLFW"
+
 project "Fish"
 	location "Fish"
 	kind "SharedLib"         --类型为动态库
@@ -30,7 +37,15 @@ project "Fish"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+		--%{IncludeDir.GLFW}表示要获取表 IncludeDir 中键为 "GLFW" 的元素值
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

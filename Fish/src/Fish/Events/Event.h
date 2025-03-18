@@ -1,5 +1,6 @@
 #pragma once
 
+#include "fishpch.h"
 #include "Fish/Core.h"
 
 namespace Fish

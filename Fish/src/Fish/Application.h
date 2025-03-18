@@ -2,6 +2,10 @@
 
 #include "Core.h"
 
+#include "Events/Event.h"
+#include "Window.h"
+
+
 namespace Fish
 {
 	class FISH_API Application
@@ -25,6 +29,12 @@ namespace Fish
 		//
 
 		void run();
+	private:
+		std::unique_ptr<Window> m_Window;
+		//m_Window拥有对窗口对象的唯一所有权，当m_Window被销毁时，窗口对象也会被自动销毁，这有助于管理资源的生命周期，避免内存泄漏
+		//unique_ptr 不能被复制（拷贝构造函数和赋值运算符被删除），但可以通过 std::move 移动所有权。
+		//当 m_Window 离开作用域（如所在对象被销毁），或显式调用 reset() 时，unique_ptr 会自动调用 delete 释放其指向的 Window 对象。
+		bool m_Running = true;
 	};
 
 	//To be defined in the CLIENT
