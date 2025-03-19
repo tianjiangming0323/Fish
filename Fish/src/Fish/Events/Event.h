@@ -101,6 +101,9 @@ namespace Fish
 			}
 			return false;
 		}
+		//Dispatch函数接受一个参数为T&，返回值为bool的函数func为参数
+		//首先判断e和T的类型是否匹配
+		//若匹配则利用func对e进行处理
 	private:
 		Event& m_Event;      //当前被分发的事件引用
 
