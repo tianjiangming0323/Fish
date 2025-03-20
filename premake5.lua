@@ -14,8 +14,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"             --De
 --IncludeDir = {} 是创建了一个空的 Lua 表（table），用来存储不同模块或库的包含目录。
 IncludeDir = {}
 IncludeDir["GLFW"] = "Fish/vendor/GLFW/include"
+IncludeDir["Glad"] = "Fish/vendor/Glad/include"
 
 include "Fish/vendor/GLFW"
+include "Fish/vendor/Glad"
 
 project "Fish"
 	location "Fish"
@@ -38,13 +40,15 @@ project "Fish"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
 		--%{IncludeDir.GLFW}表示要获取表 IncludeDir 中键为 "GLFW" 的元素值
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -56,7 +60,8 @@ project "Fish"
 		defines
 		{
 			"FISH_PLATFORM_WINDOWS",
-			"FISH_BUILD_DLL"
+			"FISH_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

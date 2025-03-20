@@ -5,6 +5,8 @@
 #include "Fish/Events/MouseEvent.h"
 #include "Fish/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Fish
 {
 	static bool s_GLFWInitialized = false;
@@ -61,6 +63,12 @@ namespace Fish
 		//上下文包含了所有OpenGL的状态信息，比如纹理、着色器、缓冲区等。当切换上下文时，实际上是在切换不同的状态集合。每个窗口都可以有自己的上下文，而正确绑定上下文是渲染到特定窗口的关键
 		//glfwMakeContextCurrent(m_Window)将 OpenGL 上下文（Context） 绑定到当前线程，并关联到指定的窗口（m_Window）
 		//只有绑定上下文后才能调用OpenGL函数（比如Application.cpp中的glClearColor(1, 0, 1, 1)和glClear(GL_COLOR_BUFFER_BIT)
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		//使用 glfwGetProcAddress 获取当前环境下的 OpenGL 函数的地址，并通过 gladLoadGLLoader 将这些函数指针加载到程序中，从而使得程序可以调用 OpenGL 提供的各种函数进行图形渲染等操作
+		//之前都在使用glfw，经此之后可以使用gl的函数，以此获取用来进行图形渲染的函数
+		FISH_CORE_ASSERT(status, "Failed to initialize Glad");
+
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		//将自定义数据（m_Data 的指针）附加到窗口对象
