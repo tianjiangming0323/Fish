@@ -68,18 +68,18 @@ project "Fish"
 	filter "configurations:Debug"
 		defines "FISH_DEBUG"
 		symbols "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MDd" }
 
 
 	filter "configurations:Release"
 		defines "FISH_RELEASE"
 		optimize "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MD" }
 
 	filter "configurations:Dist"
 		defines "FISH_DIST"
 		optimize "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MD" }
 
 
 project "Sandbox"
@@ -121,15 +121,15 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "FISH_DEBUG"
 		symbols "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MDd" }
 
 
 	filter "configurations:Release"
 		defines "FISH_RELEASE"
 		optimize "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MD" }
 
 	filter "configurations:Dist"
 		defines "FISH_DIST"
 		optimize "On"
-		buildoptions "/utf-8"
+		buildoptions {"/utf-8", "/MD" }

@@ -37,6 +37,16 @@ namespace Fish
 
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
@@ -47,7 +57,16 @@ namespace Fish
 
 		//在这里显式指定类型方法调用Dispatch，即T&为WindowCloseEvent
 
-		FISH_CORE_TRACE("{0}", e.ToString());
+		//FISH_CORE_TRACE("{0}", e.ToString());
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		{
+			(*--it)->OnEvent(e);
+			//m_LayerStack 的遍历顺序从末尾（最上层）到开头（最底层），符合“上层 Layer 优先处理事件”的设计
+			if (e.Handled)
+				break;
+			// 若某层调用 e.Handled = true，事件停止传播，后续层不再处理
+		}
+
 	}
 	//OnEvent仅对WindowClose有操作，为啥在实际应用中能改变size
 	//改变size的逻辑在于：glfwSetWindowSizeCallback回调函数中WindowData& data是现在这个窗口data的引用
@@ -81,6 +100,9 @@ namespace Fish
 			//清除当前帧缓冲区的指定部分（这里是颜色缓冲区）
 			//GL_DEPTH_BUFFER_BIT：清除深度缓冲区（用于3D深度测试）。
 			//GL_STENCIL_BUFFER_BIT：清除模板缓冲区（用于模板测试）。
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
 			m_Window->OnUpdate();
 		}
 	}

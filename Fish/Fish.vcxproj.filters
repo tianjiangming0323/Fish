@@ -7,6 +7,9 @@
     <Filter Include="Fish\Events">
       <UniqueIdentifier>{F3C83325-5F7E-AC1A-E872-A6F15427A31E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Fish.h" />
@@ -31,23 +34,39 @@
     <ClInclude Include="src\Fish\Events\MouseEvent.h">
       <Filter>Fish\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fish\Layer.h">
+      <Filter>Fish</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fish\LayerStack.h">
+      <Filter>Fish</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fish\Log.h">
       <Filter>Fish</Filter>
     </ClInclude>
     <ClInclude Include="src\Fish\Window.h">
       <Filter>Fish</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\fishpch.h" />
-    <ClInclude Include="src\Platform\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
+    <ClCompile Include="src\Fish\Layer.cpp">
+      <Filter>Fish</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fish\LayerStack.cpp">
+      <Filter>Fish</Filter>
+    </ClCompile>
     <ClCompile Include="src\Fish\Log.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
     <ClCompile Include="src\fishpch.cpp" />
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

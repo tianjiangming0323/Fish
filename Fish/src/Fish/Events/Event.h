@@ -60,11 +60,13 @@ namespace Fish
 
 	class FISH_API Event
 	{
-		friend class EventDispatcher;
+		//friend class EventDispatcher;
 		//友元  CPP笔记P9 37条
 		//EventDispatcher 可以访问 Event中的私有成员
 
 	public:
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -74,8 +76,8 @@ namespace Fish
 		{
 			return GetCategoryFlags() & category;   //按位与运算
 		}
-	protected:
-		bool m_Handled = false;
+	/*protected:
+		bool m_Handled = false;*/
 		//if an event was handled
 	};
 
@@ -96,7 +98,8 @@ namespace Fish
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())     //类型匹配检查
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);              //安全转换后调用处理函数
+				//m_Event.m_Handled = func(*(T*)&m_Event);              //安全转换后调用处理函数
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
