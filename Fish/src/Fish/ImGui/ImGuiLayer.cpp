@@ -3,9 +3,13 @@
 
 #include "imgui.h"
 #include "Platform//OpenGL/ImGuiOpenGLRenderer.h"
-#include "GLFW/glfw3.h"
+
 
 #include "Fish/Application.h"
+
+
+#include "GLFW/glfw3.h"
+#include "glad/glad.h"
 
 namespace Fish
 {
@@ -96,6 +100,111 @@ namespace Fish
 
 	void ImGuiLayer::OnEvent(Event& event)
 	{
+        EventDispatcher dispatcher(event);
+        dispatcher.Dispatch<MouseButtonPressedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
+        dispatcher.Dispatch<MouseButtonReleasedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
+        dispatcher.Dispatch<MouseMovedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
+        dispatcher.Dispatch<MouseScrolledEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
+        dispatcher.Dispatch<KeyPressedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
+        dispatcher.Dispatch<KeyReleasedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
+        dispatcher.Dispatch<KeyTypedEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
+        dispatcher.Dispatch<WindowResizeEvent>(FISH_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
 
 	}
+
+    bool ImGuiLayer::OnMouseButtonPressedEvent(MouseButtonPressedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MouseDown[e.GetMouseButton()] = true;
+
+        return false;
+        //当处理事件时，返回 false 通常表示事件没有被“消费”，即并未完全处理。在这种情况下，我们可能希望其他地方也有机会继续处理这个事件。如果函数返回 true，则表示事件已经被处理了，不需要进一步传播。
+        //因此，在这段代码中，返回 false 是为了让其他地方也有机会处理鼠标按键按下事件
+
+        /*在打开的商城页面中，在点下商品之后，此图层并不会消失，而是等待另一个按钮“购买”被点击后该图层才会消失。
+        1.点击商品时，整体事件并没有处理完
+        2.为了购买按钮的事件能够触发，我们将前一个事件标记为未处理完成，将其进一步传播
+        3, 直到购买按钮被触发，整个事件完成*/
+
+        //函数的返回值bool会传递给事件e的e.Handled
+    }
+
+
+    bool ImGuiLayer::OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MouseDown[e.GetMouseButton()] = false;
+
+        return false;
+    }
+
+
+    bool ImGuiLayer::OnMouseMovedEvent(MouseMovedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MousePos = ImVec2(e.GetX(), e.GetY());
+
+        return false;
+    }
+
+
+    bool ImGuiLayer::OnMouseScrolledEvent(MouseScrolledEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.MouseWheelH += e.GetXOffset();
+        io.MouseWheel += e.GetYOffset();
+
+        return false;
+    }
+
+
+    bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.KeysDown[e.GetKeyCode()] = true;
+
+        io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+        io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+        io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+        io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+
+        return false;
+    }
+
+    bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.KeysDown[e.GetKeyCode()] = false;
+
+        return false;
+
+    }
+
+
+    bool ImGuiLayer::OnKeyTypedEvent(KeyTypedEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        int keycode = e.GetKeyCode();
+        if (keycode > 0 && keycode < 0x10000)
+            io.AddInputCharacter((unsigned short)keycode);
+
+        return false;
+
+    }
+
+    bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.DisplaySize = ImVec2(e.GetWidth(), e.GetHeight());
+        io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+        glViewport(0, 0, e.GetWidth(), e.GetHeight());
+        //设置视口（Viewport），用来指定 OpenGL 渲染的目标区域在帧缓冲区中的位置和大小
+        //void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
+        //x：指定视口的左下角 X 坐标
+        //y：指定视口的左下角 Y 坐标
+        //width：指定视口的宽度
+        //height：指定视口的高度
+
+        return false;
+    }
 }

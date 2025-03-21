@@ -17,7 +17,7 @@ namespace Fish
 		WindowClose, WindowResize, WindowFoucus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		//ApplicationEvent.h
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased,KeyTyped,
 		//KeyEvent.h
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 		//MouseEvent.h

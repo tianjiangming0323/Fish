@@ -34,7 +34,7 @@ namespace Fish
 		//SetEventCallback 输入为一个函数，该函数的输入为Event&，返回值为void
 		//将该函数设置为回调函数
 		//即WindowsWindow.cpp中，每个GLFW Callbacks中的data.EventCallback(event)  ==  OnEvent(event)
-
+		
 	}
 
 	Application::~Application()
