@@ -7,8 +7,14 @@
     <Filter Include="Fish\Events">
       <UniqueIdentifier>{F3C83325-5F7E-AC1A-E872-A6F15427A31E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fish\ImGui">
+      <UniqueIdentifier>{59ACDFF1-4564-213F-AE6B-FA9A9A42BC2F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +40,9 @@
     <ClInclude Include="src\Fish\Events\MouseEvent.h">
       <Filter>Fish\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fish\ImGui\ImGuiLayer.h">
+      <Filter>Fish\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fish\Layer.h">
       <Filter>Fish</Filter>
     </ClInclude>
@@ -46,6 +55,9 @@
     <ClInclude Include="src\Fish\Window.h">
       <Filter>Fish</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -55,6 +67,9 @@
     <ClCompile Include="src\Fish\Application.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
+    <ClCompile Include="src\Fish\ImGui\ImGuiLayer.cpp">
+      <Filter>Fish\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Fish\Layer.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
@@ -63,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="src\Fish\Log.cpp">
       <Filter>Fish</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>

@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"             --De
 IncludeDir = {}
 IncludeDir["GLFW"] = "Fish/vendor/GLFW/include"
 IncludeDir["Glad"] = "Fish/vendor/Glad/include"
+IncludeDir["ImGui"] = "Fish/vendor/imgui"
 
 include "Fish/vendor/GLFW"
 include "Fish/vendor/Glad"
+include "Fish/vendor/imgui"
 
 project "Fish"
 	location "Fish"
@@ -42,13 +44,15 @@ project "Fish"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		--%{IncludeDir.GLFW}表示要获取表 IncludeDir 中键为 "GLFW" 的元素值
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

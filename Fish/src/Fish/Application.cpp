@@ -21,9 +21,14 @@ namespace Fish
 //预先绑定的参数（如 this）        
 //占位符（如 _1），表示生成的函数对象在被调用时需要接收一个参数，即OnEvent需要一个参数
 
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		FISH_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+		//应用了单例模式
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		//SetEventCallback 输入为一个函数，该函数的输入为Event&，返回值为void
@@ -41,11 +46,14 @@ namespace Fish
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -104,6 +112,7 @@ namespace Fish
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+			//先Example再ImGui
 			m_Window->OnUpdate();
 		}
 	}

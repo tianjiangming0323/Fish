@@ -6,6 +6,8 @@
 #include "Fish/Layer.h"
 #include "Fish/Log.h"
 
+#include "Fish/ImGui/ImGuiLayer.h"
+
 //-------------- ENTRY POINT------------------------
 #include "Fish/EntryPoint.h"
 //--------------------------------------------------
