@@ -10,6 +10,10 @@
 	#error FISH only support Windows!
 #endif
 
+#ifdef FISH_DEBUG
+	#define FISH_ENABLE_ASSERTS
+#endif
+
 #ifdef FISH_ENABLE_ASSETRTS
 	#define FISH_ASSERT(x,...) {if(!x) {FISH_ERROR("Assertion Failed : {0}", __VA_ARGS__);__debugbreak();}}
 	#define FISH_Core_ASSERT(x,...) {if(!x) {FISH_Core_ERROR("Assertion Failed : {0}", __VA_ARGS__);__debugbreak();}}
