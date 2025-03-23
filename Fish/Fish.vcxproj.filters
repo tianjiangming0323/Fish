@@ -58,10 +58,12 @@
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\WindowsWindow.h">
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
     <ClInclude Include="src\fishpch.h" />
+    <ClInclude Include="src\Fish\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp">
@@ -82,9 +84,10 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\fishpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

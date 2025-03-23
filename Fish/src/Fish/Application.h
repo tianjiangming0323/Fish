@@ -38,9 +38,8 @@ namespace Fish
 
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
-		//虽然此处没有实现，构造函数还是public
-		//但可以将构造函数private，这样就禁止了利用new等关键字进行外部实例化
-		//单例类想要与外界进行数据交换就只能通过静态函数Get()实现
+		//s_Instance为类指针，返回解引用
+		
 	private:
 
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -55,6 +54,9 @@ namespace Fish
 		static Application* s_Instance;
 		//Application被设置成了单例类
 		//确保一个类只有一个实例，并提供一个全局访问点，方便其他代码获取该实例。它常用于管理全局资源（如配置、数据库连接、日志系统等）
+		//虽然此类中构造函数是public
+		//但可以将构造函数private，这样就禁止了利用new等关键字进行外部实例化
+		//单例类想要与外界进行数据交换就只能通过静态函数Get()实现
 	};
 
 	//To be defined in the CLIENT

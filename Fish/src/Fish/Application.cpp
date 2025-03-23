@@ -9,6 +9,7 @@
 
 //#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+//#include "Fish/Input.h"
 
 
 namespace Fish
@@ -113,6 +114,10 @@ namespace Fish
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			//ÏÈExampleÔÙImGui
+
+			/*auto [x, y] = Input::GetMousePosition();
+			FISH_CORE_TRACE("{0},{1}", x, y);*/
+
 			m_Window->OnUpdate();
 		}
 	}
