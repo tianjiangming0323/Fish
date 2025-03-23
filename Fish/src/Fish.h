@@ -6,6 +6,10 @@
 #include "Fish/Layer.h"
 #include "Fish/Log.h"
 
+#include "Fish/Input.h"
+#include "Fish/KeyCodes.h"
+#include "Fish/MouseButtonCodes.h"
+
 #include "Fish/ImGui/ImGuiLayer.h"
 
 //-------------- ENTRY POINT------------------------

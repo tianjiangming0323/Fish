@@ -47,6 +47,7 @@ namespace Fish
 	float WindowsInput::GetMouseXImpl()
 	{
 		auto [x, y] = GetMousePositionImpl();
+		//通过结构化绑定 auto [x, y]，这个对象被解构为两个单独的变量 x 和 y
 		return x;
 	}
 

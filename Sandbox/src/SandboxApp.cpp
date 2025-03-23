@@ -11,12 +11,23 @@ public:
 
 	void OnUpdate() override
 	{
-		FISH_INFO("ExampleLayer::Update");
+		//FISH_INFO("ExampleLayer::Update");
+		if (Fish::Input::IsKeyPressed(FISH_KEY_TAB))
+			//静态类，不用生成类对象就可以直接调用函数
+			FISH_TRACE("Tab key is pressed(poll)!");
 	}
 
 	void OnEvent(Fish::Event& event) override
 	{
-		FISH_TRACE("{0}", event.ToString());
+		//FISH_TRACE("{0}", event.ToString());
+		if (event.GetEventType() == Fish::EventType::KeyPressed)
+		{
+			Fish::KeyPressedEvent& e = (Fish::KeyPressedEvent&)event;
+			//类型转换，将Event父类转换成KeyEvent子类
+			if (e.GetKeyCode() == FISH_KEY_TAB)
+				FISH_TRACE("Tab key is pressed(event)!");
+			FISH_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

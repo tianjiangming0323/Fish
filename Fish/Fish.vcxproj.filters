@@ -64,6 +64,8 @@
     <ClInclude Include="src\fishpch.h" />
     <ClInclude Include="src\Fish\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Fish\KeyCodes.h" />
+    <ClInclude Include="src\Fish\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp">

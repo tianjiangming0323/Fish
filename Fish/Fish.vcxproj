@@ -165,9 +165,11 @@
     <ClInclude Include="src\Fish\Events\MouseEvent.h" />
     <ClInclude Include="src\Fish\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Fish\Input.h" />
+    <ClInclude Include="src\Fish\KeyCodes.h" />
     <ClInclude Include="src\Fish\Layer.h" />
     <ClInclude Include="src\Fish\LayerStack.h" />
     <ClInclude Include="src\Fish\Log.h" />
+    <ClInclude Include="src\Fish\MouseButtonCodes.h" />
     <ClInclude Include="src\Fish\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
