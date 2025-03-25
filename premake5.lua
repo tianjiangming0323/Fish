@@ -17,10 +17,12 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Fish/vendor/GLFW/include"
 IncludeDir["Glad"] = "Fish/vendor/Glad/include"
 IncludeDir["ImGui"] = "Fish/vendor/imgui"
+IncludeDir["glm"] = "Fish/vendor/glm"
 
 include "Fish/vendor/GLFW"
 include "Fish/vendor/Glad"
 include "Fish/vendor/imgui"
+
 
 project "Fish"
 	location "Fish"
@@ -37,7 +39,9 @@ project "Fish"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +51,9 @@ project "Fish"
 		"%{IncludeDir.GLFW}",
 		--%{IncludeDir.GLFW}表示要获取表 IncludeDir 中键为 "GLFW" 的元素值
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
+
 	}
 
 	links
@@ -116,7 +122,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Fish/vendor/spdlog/include",
-		"Fish/src"
+		"Fish/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
