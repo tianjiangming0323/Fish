@@ -1,5 +1,7 @@
 #include <Fish.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Fish::Layer
 {
 public:
@@ -16,6 +18,14 @@ public:
 		if (Fish::Input::IsKeyPressed(FISH_KEY_TAB))
 			//静态类，不用生成类对象就可以直接调用函数
 			FISH_TRACE("Tab key is pressed(poll)!");
+	}
+
+
+	virtual void OnImGuiRender() override
+	{
+		/*ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();*/
 	}
 
 	void OnEvent(Fish::Event& event) override
@@ -40,7 +50,7 @@ public:
 	Sandbox()
 	{ 
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Fish::ImGuiLayer());
+		//PushOverlay(new Fish::ImGuiLayer());
 
 	}
 

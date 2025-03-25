@@ -31,7 +31,8 @@ namespace Fish
 
 	private:
 		std::vector<Layer*> m_Layers;          // 存储所有层的容器
-		std::vector<Layer*>::iterator m_LayerInsert;   // 记录普通层的插入位置，迭代器可以看做一个指针
+		//std::vector<Layer*>::iterator m_LayerInsert;   // 记录普通层的插入位置，迭代器可以看做一个指针
+		unsigned int m_LayerInsertIndex = 0;
 	};
 }
 

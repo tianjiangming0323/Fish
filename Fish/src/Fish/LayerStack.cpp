@@ -5,7 +5,7 @@ namespace Fish
 {
 	LayerStack::LayerStack()
 	{
-		m_LayerInsert = m_Layers.begin();
+		//m_LayerInsert = m_Layers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -16,10 +16,13 @@ namespace Fish
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+		//m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
 		//emplace 方法在 m_LayerInsert 迭代器指向的位置插入新元素 layer
 		//新元素会被插入到当前元素的前面
 		//emplace的返回值是指向新插入元素的迭代器
+
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+		m_LayerInsertIndex++;
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
@@ -40,7 +43,7 @@ namespace Fish
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
-			m_LayerInsert--;
+			m_LayerInsertIndex--;
 			//代码这么写，只能删栈底即c
 			//c最后传入，地址最大，故确实是--
 

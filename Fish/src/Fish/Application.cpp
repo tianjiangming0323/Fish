@@ -35,6 +35,9 @@ namespace Fish
 		//SetEventCallback 输入为一个函数，该函数的输入为Event&，返回值为void
 		//将该函数设置为回调函数
 		//即WindowsWindow.cpp中，每个GLFW Callbacks中的data.EventCallback(event)  ==  OnEvent(event)
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 		
 	}
 
@@ -114,6 +117,11 @@ namespace Fish
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			//先Example再ImGui
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			/*auto [x, y] = Input::GetMousePosition();
 			FISH_CORE_TRACE("{0},{1}", x, y);*/

@@ -171,7 +171,6 @@
     <ClInclude Include="src\Fish\Log.h" />
     <ClInclude Include="src\Fish\MouseButtonCodes.h" />
     <ClInclude Include="src\Fish\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\fishpch.h" />
@@ -596,11 +595,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fish\Application.cpp" />
+    <ClCompile Include="src\Fish\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Fish\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Fish\Layer.cpp" />
     <ClCompile Include="src\Fish\LayerStack.cpp" />
     <ClCompile Include="src\Fish\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\fishpch.cpp">

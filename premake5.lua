@@ -123,6 +123,7 @@ project "Sandbox"
 	{
 		"Fish/vendor/spdlog/include",
 		"Fish/src",
+		"Fish/vendor",
 		"%{IncludeDir.glm}"
 	}
 
